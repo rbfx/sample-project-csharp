@@ -19,23 +19,42 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
+// Based on ComPtr interface by Silk.NET/.NET Foundation
+// https://github.com/dotnet/Silk.NET/blob/main/src/Core/Silk.NET.Core/Native/ComPtr%601.cs
+//
 
 using Urho3DNet;
 
-namespace SampleProject
-{
-    static class Program
-    {
-        public static void Main(string[] args)
-        {
+namespace SampleProject;
 
-            using (var context = new Context())
-            {
-                using (SharedPtr<SampleApplication> app = new SampleApplication(context))
-                {
-                    app.Get().Run();
-                }
-            }
-        }
+public readonly struct SharedPtr<T>: IDisposable where T: RefCounted
+{
+    public SharedPtr(T other)
+    {
+        _value = other;
+        AddRef();
     }
+    public SharedPtr(SharedPtr<T> other) : this(other._value) { }
+
+    public static implicit operator SharedPtr<T>(T other) => new SharedPtr<T>(other);
+    public static implicit operator T(SharedPtr<T> @this) => @this._value;
+
+    private readonly int AddRef()
+    {
+        return _value?.AddRef() ?? 0;
+    }
+
+    public int ReleaseRef()
+    {
+        return _value?.ReleaseRef() ?? 0;
+    }
+
+    public readonly T Get() => _value;
+
+    public void Dispose()
+    {
+        ReleaseRef();
+    }
+
+    private readonly T _value;
 }
