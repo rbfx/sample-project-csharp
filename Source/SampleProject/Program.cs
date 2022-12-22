@@ -33,7 +33,7 @@ namespace SampleProject
             {
                 using (SharedPtr<SampleApplication> app = new SampleApplication(context))
                 {
-                    app.Get().Run();
+                    app.Ptr.Run();
                 }
             }
         }

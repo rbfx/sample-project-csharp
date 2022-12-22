@@ -9,8 +9,8 @@ class GameScreen : ApplicationState
     public GameScreen(Context context) : base(context)
     {
         _scene = Context.CreateObject<Scene>();
-        _scene.Get().LoadFile("Scenes/Scene.xml");
-        SetViewport(0, new Viewport(Context, _scene, _scene.Get().GetComponent<Camera>(true)));
+        _scene.Ptr.LoadFile("Scenes/Scene.xml");
+        SetViewport(0, new Viewport(Context, _scene, _scene.Ptr.GetComponent<Camera>(true)));
     }
 
     protected override void Dispose(bool disposing)

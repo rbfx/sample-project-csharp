@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="rbfx.Urho3DNet" Version="0.0.10-alpha-abceea8" />
+    <PackageReference Include="rbfx.Urho3DNet" Version="0.0.11-alpha-7efb7a4" />
   </ItemGroup>
 
 </Project>
