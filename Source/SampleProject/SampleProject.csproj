@@ -5,25 +5,26 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Platforms>x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
 	  <Content Include="..\..\Project\CoreData\**">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		  <Pack/>
+		  <Pack />
 		  <PackagePath>CoreData/%(RecursiveDir)%(FileName)%(Extension)</PackagePath>
 		  <Link>CoreData/%(RecursiveDir)%(FileName)%(Extension)</Link>
 	  </Content>
 	  <Content Include="..\..\Project\Data\**">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		  <Pack/>
+		  <Pack />
 		  <PackagePath>Data/%(RecursiveDir)%(FileName)%(Extension)</PackagePath>
 		  <Link>Data/%(RecursiveDir)%(FileName)%(Extension)</Link>
 	  </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="rbfx.Urho3DNet" Version="0.0.9-alpha-5a8021c" />
+    <PackageReference Include="rbfx.Urho3DNet" Version="0.0.10-alpha-abceea8" />
   </ItemGroup>
 
 </Project>
